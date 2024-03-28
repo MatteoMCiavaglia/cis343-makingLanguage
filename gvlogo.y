@@ -38,6 +38,8 @@ void prompt();
 void penup();
 void pendown();
 void move(int num);
+void goto(int coordinate);
+void where();
 void turn(int dir);
 void output(const char* s);
 void change_color(int r, int g, int b);
@@ -61,6 +63,8 @@ void shutdown();
 %token CHANGE_COLOR
 %token COLOR
 %token CLEAR
+%token GOTO
+%token WHERE
 %token TURN
 %token LOOP
 %token MOVE
@@ -126,6 +130,12 @@ void move(int num){
 	event.user.code = 1;
 	event.user.data1 = num;
 	SDL_PushEvent(&event);
+}
+
+void goto(int coordinate) {
+}
+
+void where(){
 }
 
 void turn(int dir){
