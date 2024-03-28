@@ -61,18 +61,20 @@ extern int yydebug;
     CHANGE_COLOR = 262,            /* CHANGE_COLOR  */
     COLOR = 263,                   /* COLOR  */
     CLEAR = 264,                   /* CLEAR  */
-    TURN = 265,                    /* TURN  */
-    LOOP = 266,                    /* LOOP  */
-    MOVE = 267,                    /* MOVE  */
-    NUMBER = 268,                  /* NUMBER  */
-    END = 269,                     /* END  */
-    SAVE = 270,                    /* SAVE  */
-    PLUS = 271,                    /* PLUS  */
-    SUB = 272,                     /* SUB  */
-    MULT = 273,                    /* MULT  */
-    DIV = 274,                     /* DIV  */
-    STRING = 275,                  /* STRING  */
-    QSTRING = 276                  /* QSTRING  */
+    GOTO = 265,                    /* GOTO  */
+    WHERE = 266,                   /* WHERE  */
+    TURN = 267,                    /* TURN  */
+    LOOP = 268,                    /* LOOP  */
+    MOVE = 269,                    /* MOVE  */
+    NUMBER = 270,                  /* NUMBER  */
+    END = 271,                     /* END  */
+    SAVE = 272,                    /* SAVE  */
+    PLUS = 273,                    /* PLUS  */
+    SUB = 274,                     /* SUB  */
+    MULT = 275,                    /* MULT  */
+    DIV = 276,                     /* DIV  */
+    STRING = 277,                  /* STRING  */
+    QSTRING = 278                  /* QSTRING  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -81,12 +83,12 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 50 "gvlogo.y"
+#line 52 "gvlogo.y"
 
 	float f;
 	char* s;
 
-#line 90 "gvlogo.tab.h"
+#line 92 "gvlogo.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

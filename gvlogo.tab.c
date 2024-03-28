@@ -108,6 +108,8 @@ void prompt();
 void penup();
 void pendown();
 void move(int num);
+void goto(double xCoordinate, double yCoordinate);
+void where();
 void turn(int dir);
 void output(const char* s);
 void change_color(int r, int g, int b);
@@ -116,7 +118,7 @@ void save(const char* path);
 void shutdown();
 
 
-#line 120 "gvlogo.tab.c"
+#line 122 "gvlogo.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -154,24 +156,26 @@ enum yysymbol_kind_t
   YYSYMBOL_CHANGE_COLOR = 7,               /* CHANGE_COLOR  */
   YYSYMBOL_COLOR = 8,                      /* COLOR  */
   YYSYMBOL_CLEAR = 9,                      /* CLEAR  */
-  YYSYMBOL_TURN = 10,                      /* TURN  */
-  YYSYMBOL_LOOP = 11,                      /* LOOP  */
-  YYSYMBOL_MOVE = 12,                      /* MOVE  */
-  YYSYMBOL_NUMBER = 13,                    /* NUMBER  */
-  YYSYMBOL_END = 14,                       /* END  */
-  YYSYMBOL_SAVE = 15,                      /* SAVE  */
-  YYSYMBOL_PLUS = 16,                      /* PLUS  */
-  YYSYMBOL_SUB = 17,                       /* SUB  */
-  YYSYMBOL_MULT = 18,                      /* MULT  */
-  YYSYMBOL_DIV = 19,                       /* DIV  */
-  YYSYMBOL_STRING = 20,                    /* STRING  */
-  YYSYMBOL_QSTRING = 21,                   /* QSTRING  */
-  YYSYMBOL_22_n_ = 22,                     /* '\n'  */
-  YYSYMBOL_YYACCEPT = 23,                  /* $accept  */
-  YYSYMBOL_program = 24,                   /* program  */
-  YYSYMBOL_statement_list = 25,            /* statement_list  */
-  YYSYMBOL_statement = 26,                 /* statement  */
-  YYSYMBOL_command = 27                    /* command  */
+  YYSYMBOL_GOTO = 10,                      /* GOTO  */
+  YYSYMBOL_WHERE = 11,                     /* WHERE  */
+  YYSYMBOL_TURN = 12,                      /* TURN  */
+  YYSYMBOL_LOOP = 13,                      /* LOOP  */
+  YYSYMBOL_MOVE = 14,                      /* MOVE  */
+  YYSYMBOL_NUMBER = 15,                    /* NUMBER  */
+  YYSYMBOL_END = 16,                       /* END  */
+  YYSYMBOL_SAVE = 17,                      /* SAVE  */
+  YYSYMBOL_PLUS = 18,                      /* PLUS  */
+  YYSYMBOL_SUB = 19,                       /* SUB  */
+  YYSYMBOL_MULT = 20,                      /* MULT  */
+  YYSYMBOL_DIV = 21,                       /* DIV  */
+  YYSYMBOL_STRING = 22,                    /* STRING  */
+  YYSYMBOL_QSTRING = 23,                   /* QSTRING  */
+  YYSYMBOL_24_n_ = 24,                     /* '\n'  */
+  YYSYMBOL_YYACCEPT = 25,                  /* $accept  */
+  YYSYMBOL_program = 26,                   /* program  */
+  YYSYMBOL_statement_list = 27,            /* statement_list  */
+  YYSYMBOL_statement = 28,                 /* statement  */
+  YYSYMBOL_command = 29                    /* command  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -502,10 +506,10 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  8
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   13
+#define YYLAST   15
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  23
+#define YYNTOKENS  25
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  5
 /* YYNRULES -- Number of rules.  */
@@ -514,7 +518,7 @@ union yyalloc
 #define YYNSTATES  12
 
 /* YYMAXUTOK -- Last valid token kind.  */
-#define YYMAXUTOK   276
+#define YYMAXUTOK   278
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -529,7 +533,7 @@ union yyalloc
 static const yytype_int8 yytranslate[] =
 {
        0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-      22,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+      24,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -555,14 +559,14 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
-      15,    16,    17,    18,    19,    20,    21
+      15,    16,    17,    18,    19,    20,    21,    22,    23
 };
 
 #if YYDEBUG
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    76,    76,    78,    79,    81,    82,    84
+       0,    80,    80,    82,    83,    85,    86,    88
 };
 #endif
 
@@ -579,10 +583,10 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
 static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "SEP", "PENUP",
-  "PENDOWN", "PRINT", "CHANGE_COLOR", "COLOR", "CLEAR", "TURN", "LOOP",
-  "MOVE", "NUMBER", "END", "SAVE", "PLUS", "SUB", "MULT", "DIV", "STRING",
-  "QSTRING", "'\\n'", "$accept", "program", "statement_list", "statement",
-  "command", YY_NULLPTR
+  "PENDOWN", "PRINT", "CHANGE_COLOR", "COLOR", "CLEAR", "GOTO", "WHERE",
+  "TURN", "LOOP", "MOVE", "NUMBER", "END", "SAVE", "PLUS", "SUB", "MULT",
+  "DIV", "STRING", "QSTRING", "'\\n'", "$accept", "program",
+  "statement_list", "statement", "command", YY_NULLPTR
 };
 
 static const char *
@@ -592,7 +596,7 @@ yysymbol_name (yysymbol_kind_t yysymbol)
 }
 #endif
 
-#define YYPACT_NINF (-21)
+#define YYPACT_NINF (-23)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -606,8 +610,8 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-       0,   -20,   -21,     5,    -8,    -1,     4,   -21,   -21,   -21,
-     -21,   -21
+       0,   -22,   -23,     5,   -10,    -1,     4,   -23,   -23,   -23,
+     -23,   -23
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -622,7 +626,7 @@ static const yytype_int8 yydefact[] =
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -21,   -21,     3,   -21,   -21
+     -23,   -23,     3,   -23,   -23
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -637,27 +641,27 @@ static const yytype_int8 yydefgoto[] =
 static const yytype_int8 yytable[] =
 {
        1,     1,     7,     2,     2,     8,     9,    11,    10,     0,
-       0,     0,     0,    -3
+       0,     0,     0,     0,     0,    -3
 };
 
 static const yytype_int8 yycheck[] =
 {
-       1,     1,    22,     4,     4,     0,    14,     3,     5,    -1,
-      -1,    -1,    -1,    14
+       1,     1,    24,     4,     4,     0,    16,     3,     5,    -1,
+      -1,    -1,    -1,    -1,    -1,    16
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     1,     4,    24,    25,    26,    27,    22,     0,    14,
-      25,     3
+       0,     1,     4,    26,    27,    28,    29,    24,     0,    16,
+      27,     3
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    23,    24,    25,    25,    26,    26,    27
+       0,    25,    26,    27,    27,    28,    28,    29
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
@@ -1240,31 +1244,31 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* program: statement_list END  */
-#line 76 "gvlogo.y"
+#line 80 "gvlogo.y"
                                                                         { printf("Program complete."); shutdown(); exit(0); }
-#line 1246 "gvlogo.tab.c"
+#line 1250 "gvlogo.tab.c"
     break;
 
   case 5: /* statement: command SEP  */
-#line 81 "gvlogo.y"
+#line 85 "gvlogo.y"
                                                                         { prompt(); }
-#line 1252 "gvlogo.tab.c"
+#line 1256 "gvlogo.tab.c"
     break;
 
   case 6: /* statement: error '\n'  */
-#line 82 "gvlogo.y"
+#line 86 "gvlogo.y"
                                                                         { yyerrok; prompt(); }
-#line 1258 "gvlogo.tab.c"
+#line 1262 "gvlogo.tab.c"
     break;
 
   case 7: /* command: PENUP  */
-#line 84 "gvlogo.y"
+#line 88 "gvlogo.y"
                                                                         { penup(); }
-#line 1264 "gvlogo.tab.c"
+#line 1268 "gvlogo.tab.c"
     break;
 
 
-#line 1268 "gvlogo.tab.c"
+#line 1272 "gvlogo.tab.c"
 
       default: break;
     }
@@ -1462,7 +1466,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 96 "gvlogo.y"
+#line 100 "gvlogo.y"
 
 
 int main(int argc, char** argv){
@@ -1496,6 +1500,27 @@ void move(int num){
 	event.user.code = 1;
 	event.user.data1 = num;
 	SDL_PushEvent(&event);
+}
+
+void goto(double xCoordinate, yCoordinate) {
+
+    double x, y;
+
+    if(pen_state == 1) {
+        x = xCoordinate;
+        y = yCoordinate;
+
+        event.type = DRAW_EVENT;
+        event.user.code = 1;
+        event.user.data1 = 0;
+        SDL_PushEvent(&event);
+    }else{
+        x = xCoordinate;
+        y = yCoordinate;
+}
+}
+
+void where(){
 }
 
 void turn(int dir){

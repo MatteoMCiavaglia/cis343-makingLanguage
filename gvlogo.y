@@ -38,7 +38,7 @@ void prompt();
 void penup();
 void pendown();
 void move(int num);
-void goto(int coordinate);
+void goto(double xCoordinate, double yCoordinate);
 void where();
 void turn(int dir);
 void output(const char* s);
@@ -132,7 +132,22 @@ void move(int num){
 	SDL_PushEvent(&event);
 }
 
-void goto(int coordinate) {
+void goto(double xCoordinate, yCoordinate) {
+
+    double x, y;
+
+    if(pen_state == 1) {
+        x = xCoordinate;
+        y = yCoordinate;
+
+        event.type = DRAW_EVENT;
+        event.user.code = 1;
+        event.user.data1 = 0;
+        SDL_PushEvent(&event);
+    }else{
+        x = xCoordinate;
+        y = yCoordinate;
+}
 }
 
 void where(){
