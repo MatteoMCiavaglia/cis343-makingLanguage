@@ -86,9 +86,12 @@ statement:		command SEP					{ prompt(); }
 		|	error '\n' 					{ yyerrok; prompt(); }
 		;
 command:		PENUP						{ penup(); }
+        |       PENDOWN                     {pendown();}
+//confused on QSTRING        |       PRINT QSTRING
 		;
 expression_list:
-		|	// Complete these and any missing rules
+		|   expression
+        |   expression_list expression
 		;
 expression:		NUMBER PLUS expression				{ $$ = $1 + $3; }
 		|	NUMBER MULT expression				{ $$ = $1 * $3; }
@@ -151,6 +154,7 @@ void goto(double xCoordinate, yCoordinate) {
 }
 
 void where(){
+    printf("Current Position (x: %f,y: %f)\n", x, y);
 }
 
 void turn(int dir){
