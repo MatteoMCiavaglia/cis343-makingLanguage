@@ -108,7 +108,7 @@ void prompt();
 void penup();
 void pendown();
 void move(int num);
-void goto(double xCoordinate, double yCoordinate);
+void goto_cord(double xCoordinate, double yCoordinate);
 void where();
 void turn(int dir);
 void output(const char* s);
