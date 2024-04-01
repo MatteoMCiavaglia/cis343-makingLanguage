@@ -116,7 +116,7 @@ int main(int argc, char** argv){
 int yyerror(const char* s){
 	printf("Error: %s\n", s);
 	return -1;
-}
+};
 
 void prompt(){
 	printf("gv_logo > ");
@@ -268,6 +268,10 @@ void shutdown(){
 	SDL_WaitThread(background_id, NULL);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
+}
+
+int yywrap(){
+	return 1;
 }
 
 void save(const char* path){
