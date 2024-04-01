@@ -116,7 +116,7 @@ int main(int argc, char** argv){
 int yyerror(const char* s){
 	printf("Error: %s\n", s);
 	return -1;
-};
+}
 
 void prompt(){
 	printf("gv_logo > ");
