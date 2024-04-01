@@ -86,12 +86,13 @@ statement:		command SEP					{ prompt(); }
 		|	error '\n' 					{ yyerrok; prompt(); }
 		;
 command:		PENUP						{ penup(); }
-        |       PENDOWN                     {pendown();}
-//confused on QSTRING        |       PRINT QSTRING
+        	|       PENDOWN						{pendown();}
+		|       PRINT QSTRING 					{output($2);}
+		|	SAVE QSTRING					{save($2);}
 		;
 expression_list:
 		|   expression
-        |   expression_list expression
+        	|   expression_list expression
 		;
 expression:		NUMBER PLUS expression				{ $$ = $1 + $3; }
 		|	NUMBER MULT expression				{ $$ = $1 * $3; }
