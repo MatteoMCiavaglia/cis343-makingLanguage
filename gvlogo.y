@@ -141,7 +141,7 @@ void move(int num){
 	SDL_PushEvent(&event);
 }
 
-void goto_cord(double xCoordinate, yCoordinate) {
+void goto_cord(double xCoordinate, double yCoordinate) {
 
     double x, y;
 
