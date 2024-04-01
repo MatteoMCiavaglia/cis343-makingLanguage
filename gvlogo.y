@@ -96,9 +96,8 @@ command:		PENUP						{ penup(); }
 		|	WHERE						{where();}
 		|	SAVE QSTRING					{save($2);}
 		;
-expression_list:
-		|   expression
-        	|   expression_list expression
+expression_list:	expression
+        	|	expression_list expression
 		;
 expression:		NUMBER PLUS expression				{ $$ = $1 + $3; }
 		|	NUMBER MULT expression				{ $$ = $1 * $3; }
