@@ -270,9 +270,6 @@ void shutdown(){
 	SDL_Quit();
 }
 
-int yywrap(){
-	return 1;
-}
 
 void save(const char* path){
 	SDL_Surface *surface = SDL_CreateRGBSurface(0, WIDTH, HEIGHT, 32, 0, 0, 0, 0);
