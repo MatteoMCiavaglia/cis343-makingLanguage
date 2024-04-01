@@ -88,6 +88,12 @@ statement:		command SEP					{ prompt(); }
 command:		PENUP						{ penup(); }
         	|       PENDOWN						{pendown();}
 		|       PRINT QSTRING 					{output($2);}
+		|	COLOR NUMBER NUMBER NUMBER			{change_color($2, $3, $4);}
+		|	CLEAR						{clear();}
+		|	GOTO NUMBER NUMBER				{goto($2, $3);}
+		|	TURN NUMBER					{turn($2);}
+		|	MOVE NUMBER					{move($2);}
+		|	WHERE						{where();}
 		|	SAVE QSTRING					{save($2);}
 		;
 expression_list:
