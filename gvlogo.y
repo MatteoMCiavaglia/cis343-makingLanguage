@@ -38,7 +38,7 @@ void prompt();
 void penup();
 void pendown();
 void move(int num);
-void goto(double xCoordinate, double yCoordinate);
+void goto_cord(double xCoordinate, double yCoordinate);
 void where();
 void turn(int dir);
 void output(const char* s);
@@ -90,7 +90,7 @@ command:		PENUP						{ penup(); }
 		|       PRINT QSTRING 					{output($2);}
 		|	COLOR NUMBER NUMBER NUMBER			{change_color($2, $3, $4);}
 		|	CLEAR						{clear();}
-		|	GOTO NUMBER NUMBER				{goto($2, $3);}
+		|	GOTO NUMBER NUMBER				{goto_cord($2, $3);}
 		|	TURN NUMBER					{turn($2);}
 		|	MOVE NUMBER					{move($2);}
 		|	WHERE						{where();}
@@ -141,7 +141,7 @@ void move(int num){
 	SDL_PushEvent(&event);
 }
 
-void goto(double xCoordinate, yCoordinate) {
+void goto_cord(double xCoordinate, yCoordinate) {
 
     double x, y;
 
